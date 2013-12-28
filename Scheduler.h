@@ -11,25 +11,25 @@
 #endif
 
 class Scheduler {
-   private:
-       int maxTasks;
-       int tasksScheduled;
-       AbstractTask ** queue;
+	private:
+		int maxTasks;
+		int tasksScheduled;
+		AbstractTask* * queue;
 
 #ifdef MYSPECIALDEBUGCONSTANT
-      AbstractDebug * debug;
+		AbstractDebug * debug;
 #endif
 
-   public:
+	public:
 
 #ifdef MYSPECIALDEBUGCONSTANT
-      Scheduler(int maxTasks, AbstractDebug * debug);
+		Scheduler(int maxTasks, AbstractDebug * debug);
 #else
-      Scheduler(int maxTasks);
+		Scheduler(int maxTasks);
 #endif
 
-      bool scheduleTask(AbstractTask * task);
-      void executeTasks();
+		bool scheduleTask(AbstractTask * task);
+		void executeTasks();
 };
 
 #endif

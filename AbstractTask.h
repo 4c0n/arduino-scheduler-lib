@@ -8,62 +8,60 @@
 #endif
 
 class AbstractTask {
-   private:
-      unsigned long executionTime;
-
-   protected:
+	private:
+		unsigned long executionTime;
+	protected:
 
 #ifdef MYSPECIALDEBUGCONSTANT
-      AbstractDebug * debug;
+		AbstractDebug * debug;
 #endif
 
-   public:
+	public:
 
 #ifdef MYSPECIALDEBUGCONSTANT
-      AbstractTask(unsigned long executionTime,  AbstractDebug * debug) {
-         this->debug = debug;
+		AbstractTask(unsigned long executionTime,  AbstractDebug * debug) {
+			this->debug = debug;
 #else
-      AbstractTask(unsigned long executionTime) {
+		AbstractTask(unsigned long executionTime) {
 #endif
 
-         this->executionTime = executionTime;
+			this->executionTime = executionTime;
 
 #ifdef MYSPECIALDEBUGCONSTANT
-         String message("AbstractTask::AbstractTask: executionTime: ");
-         message.concat(this->executionTime);
-         this->debug->info(message);
+			String message("AbstractTask::AbstractTask: executionTime: ");
+			message.concat(this->executionTime);
+			this->debug->info(message);
 #endif
-      }
+		}
 
 
-      virtual ~AbstractTask() {
-      }
+		virtual ~AbstractTask() {
+		}
 
-      virtual void execute() = 0;
+		virtual void execute() = 0;
 
-
-      unsigned long getExecutionTime() {
+		unsigned long getExecutionTime() {
 
 #ifdef MYSPECIALDEBUGCONSTANT
-         String message("AbstractTask::getExecutionTime: executionTime: ");
-         message.concat(this->executionTime);
-         this->debug->info(message);
+			String message("AbstractTask::getExecutionTime: executionTime: ");
+			message.concat(this->executionTime);
+			this->debug->info(message);
 #endif
 
-         return this->executionTime;
-      }
+			return this->executionTime;
+		}
 
 
-      void setExecutionTime(unsigned long executionTime) {
-         this->executionTime = executionTime;
+		void setExecutionTime(unsigned long executionTime) {
+			this->executionTime = executionTime;
 
 #ifdef MYSPECIALDEBUGCONSTANT
-         String message("AbstractTask::setExecutionTime: executionTime: ");
-         message.concat(this->executionTime);
-         this->debug->info(message);
+			String message("AbstractTask::setExecutionTime: executionTime: ");
+			message.concat(this->executionTime);
+			this->debug->info(message);
 #endif
 
-      }
+		}
 };
 
 #endif
