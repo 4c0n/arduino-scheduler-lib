@@ -5,6 +5,7 @@
 
 #include "Arduino.h"
 #include "AbstractTask.h"
+#include <ArrayQueue.h>
 
 #ifdef MYSPECIALDEBUGCONSTANT
 #include <AbstractDebug.h>
@@ -12,9 +13,7 @@
 
 class Scheduler {
 	private:
-		int maxTasks;
-		int tasksScheduled;
-		AbstractTask* * queue;
+		ArrayQueue<AbstractTask*> * queue;
 
 #ifdef MYSPECIALDEBUGCONSTANT
 		AbstractDebug * debug;
@@ -29,7 +28,7 @@ class Scheduler {
 #endif
 
 		bool scheduleTask(AbstractTask * task);
-		void executeTasks();
+		void executeTask();
 };
 
 #endif
