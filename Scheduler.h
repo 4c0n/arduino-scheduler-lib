@@ -22,11 +22,12 @@ class Scheduler {
 	public:
 
 #ifdef MYSPECIALDEBUGCONSTANT
-		Scheduler(int maxTasks, AbstractDebug * debug);
+		Scheduler(unsigned int maxTasks, AbstractDebug * debug);
 #else
-		Scheduler(int maxTasks);
+		Scheduler(unsigned int maxTasks);
 #endif
 
+		unsigned int getMaxTasks();
 		bool scheduleTask(AbstractTask * task);
 		void executeTask();
 };

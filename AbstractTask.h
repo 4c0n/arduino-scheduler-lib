@@ -38,7 +38,9 @@ class AbstractTask {
 		virtual ~AbstractTask() {
 		}
 
+
 		virtual void execute() = 0;
+
 
 		unsigned long getExecutionTime() {
 

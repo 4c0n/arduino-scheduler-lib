@@ -2,10 +2,10 @@
 #include "Scheduler.h"
 
 #ifdef MYSPECIALDEBUGCONSTANT
-Scheduler::Scheduler(int maxTasks, AbstractDebug * debug) {
+Scheduler::Scheduler(unsigned int maxTasks, AbstractDebug * debug) {
 	this->debug = debug;
 #else
-Scheduler::Scheduler(int maxTasks) {
+Scheduler::Scheduler(unsigned int maxTasks) {
 #endif
 
 	this->queue = new ArrayQueue<AbstractTask*>(maxTasks);
@@ -20,6 +20,11 @@ Scheduler::Scheduler(int maxTasks) {
 	this->debug->info(message);
 #endif
 
+}
+
+
+unsigned int getMaxTasks() {
+	return this->queue->getMaxSize();
 }
 
 
@@ -52,11 +57,12 @@ bool Scheduler::scheduleTask(AbstractTask * task) {
 	return true;
 }
 
+
 void Scheduler::executeTask() {
 	if(this->queue->getSize() > 0) {
 		unsigned long now = millis();
 
-		if(this->queue->peek()->getExecutionTime() <= now) {
+		if(this->queue->front()->getExecutionTime() <= now) {
 			AbstractTask* task = queue->pop();
 			task->execute();
 			delete task;
