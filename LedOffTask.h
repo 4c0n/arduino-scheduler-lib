@@ -9,11 +9,14 @@ class LedOffTask : public AbstractTask {
 		byte pin = 13;		
 
 	public:
-		LedOffTask() : AbstractTask(13) {
+		LedOffTask(unsigned long executionTime) : AbstractTask(executionTime) {
 		}
 
-		LedOffTask(byte pin) : AbstractTask(pin) {
+		LedOffTask(unsigned long executionTime, byte pin) : AbstractTask(executionTime) {
 			this->pin = pin;
+		}
+
+		virtual ~LedOffTask() {
 		}
 
 		void execute() {

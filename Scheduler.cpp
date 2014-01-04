@@ -67,9 +67,9 @@ bool Scheduler::scheduleTask(AbstractTask * task) {
 }
 
 
-void Scheduler::executeTask() {
+bool Scheduler::executeTask() {
 	if(this->queue->getSize() > 0) {
-		unsigned long now = millis();
+		unsigned long now = micros();
 
 		if(this->queue->front()->getExecutionTime() <= now) {
 			AbstractTask* task = queue->pop();
@@ -81,6 +81,9 @@ void Scheduler::executeTask() {
 			message.concat(now);
 			this->debug->info(message);
 #endif
+
+			return true;
 		}
 	}
+	return false;
 }

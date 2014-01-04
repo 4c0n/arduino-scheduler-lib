@@ -31,7 +31,7 @@ class Scheduler {
 		unsigned int getMaxTasks();
 		unsigned int getNumTasksScheduled();
 		bool scheduleTask(AbstractTask * task);
-		void executeTask();
+		bool executeTask();
 };
 
 #endif
