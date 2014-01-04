@@ -1,6 +1,10 @@
 #include "Arduino.h"
 #include "Scheduler.h"
 
+Scheduler::Scheduler() {
+	this->queue = new ArrayQueue<AbstractTask*>(12);
+}
+
 #ifdef MYSPECIALDEBUGCONSTANT
 Scheduler::Scheduler(unsigned int maxTasks, AbstractDebug * debug) {
 	this->debug = debug;
@@ -23,8 +27,13 @@ Scheduler::Scheduler(unsigned int maxTasks) {
 }
 
 
-unsigned int getMaxTasks() {
+unsigned int Scheduler::getMaxTasks() {
 	return this->queue->getMaxSize();
+}
+
+
+unsigned int Scheduler::getNumTasksScheduled() {
+	return this->queue->getSize();
 }
 
 

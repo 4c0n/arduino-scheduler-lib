@@ -1,7 +1,7 @@
 #ifndef Scheduler_h
 #define Scheduler_h
 
-#define MYSPECIALDEBUGCONSTANT
+//#define MYSPECIALDEBUGCONSTANT
 
 #include "Arduino.h"
 #include "AbstractTask.h"
@@ -20,6 +20,7 @@ class Scheduler {
 #endif
 
 	public:
+		Scheduler();
 
 #ifdef MYSPECIALDEBUGCONSTANT
 		Scheduler(unsigned int maxTasks, AbstractDebug * debug);
@@ -28,6 +29,7 @@ class Scheduler {
 #endif
 
 		unsigned int getMaxTasks();
+		unsigned int getNumTasksScheduled();
 		bool scheduleTask(AbstractTask * task);
 		void executeTask();
 };
